@@ -1,5 +1,6 @@
 .topnav{
-  background-color: yellow;
+  text-align: right;
+  background-color: #0C96ED;
   padding: 5px;
 }
 .topnav a{
@@ -7,11 +8,11 @@
   font-size: 20px;
   border: 1px solid;
   border-color: blue;
-  background-color: yellow;
+  background-color: #0C96ED;
 }
 .topnav a.active{
   border: 5px solid;
-  background-color: blue;
+  background-color: #4267B2;
   color: white;
 }
 .main{
@@ -27,28 +28,44 @@
   margin-right: 20%;
   text-align: center;
 }
-.class_about p{
-  border: 1px solid;
+.class_about li{
   font-size: 20px;
 }
-
+.class_about p{
+  border: 1px solid;
+  font-size: 25px;
+}
+.class_about h1{
+  color: white;
+}
+.class_about h2{
+  color: white;
+}
+.class_about h3{
+  color: white;
+}
 .class_works{
   background-color: black;
   padding: 5px;
-  margin-left: 15%;
-  margin-right: 75%;
-  text-align:justify;
+  text-align:center;
+  font-size: 20px;
 }
 .class_works li{
-  text-align:justify;
+  text-align:center;
 }
-h1{
-  text-align: center;
+.class_works a:link{
   color: white;
 }
-h2{
-  color: white;
+.class_works a:visited{
+  color: red;
 }
-h3{
-  color: white;
+.class_nav_topic{
+  float:left;
+  color: black;
+  background-color: #0C96ED;
+  margin-left: 0%;
+  margin-right: 90%;
+}
+.class_nav_topic a{
+  font-size: 25px;
 }
