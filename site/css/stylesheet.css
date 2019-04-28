@@ -16,11 +16,11 @@
   color: white;
 }
 .main{
-  background: url("\\images\\background.gif");
+  background: url("images/background.gif");
   background-repeat: repeat;
 }
 .class_about{
-  background-image: url("\\images\\binario.jpg");
+  background-image: url("images/binario.jpg");
   background-repeat: repeat;
   color: white;
   padding: 10px;
