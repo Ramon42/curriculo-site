@@ -1,0 +1,45 @@
+#mainSection{
+  margin: 0 auto;
+  width: 400px;
+  margin-top: 20px;
+  font-family: sans-serif;
+  text-align: center;
+  background-color: white;
+  padding-bottom: 5px;
+  border: 1px solid #EAEAEA;
+}
+#mainSection input[type='text'], input[type='password']{
+  border: 1px solid black;
+  text-
+  margin: 2px;
+  width: 300px;
+  height: 25px;
+
+}
+#termosText{
+  font-size:9px;
+
+}
+.buttons{
+  display:block;
+  margin: 5px auto 10px;
+  width: 300px;
+  height:25px;
+  background-color: #2A4B7C;
+  text-align: center;
+  text-decoration:none;
+  color: white;
+  font-weight:bold;
+  line-height: 150%;
+}
+  .buttons-2{
+      width: 130px;
+  }
+
+
+#startScreen{
+  background-image: linear-gradient(to bottom, #F2F2F2, transparent);
+  background-color: #F2F2F2;
+  background-repeat:no-repeat;
+
+}
