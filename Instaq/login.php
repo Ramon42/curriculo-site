@@ -2,15 +2,16 @@
 <html lang=pt dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Insmatch - Registro</title>
+    <title>Insmatch - Login</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   </head>
-  <body id = "startScreen">
+  <body  class="back-photo" id="startScreen">
     <main>
       <section id="mainSection">
         <header>
-          <h1><i class="fas fa-camera-retro"></i>InstaMatch</h1>
+          <h1 class="title"><i class="fas fa-camera-retro"></i>Insta<span class="clone">Match</span></h1>
           <h3>Entre para ver fotos e vídeos dos seus amigos</h3>
         </header>
         <div>

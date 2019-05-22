@@ -1,27 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+.back-photo{
+  background: url('../images/background.jpg')
+}
 #mainSection{
   margin: 0 auto;
   width: 400px;
   margin-top: 20px;
   font-family: sans-serif;
   text-align: center;
-  background-color: white;
+  background-color: RGBa(255, 255, 255, 45%);
+  border-radius: 3px;
   padding-bottom: 5px;
   border: 1px solid #EAEAEA;
 }
 #mainSection input[type='text'], input[type='password']{
+  padding: 2px;
   border: 1px solid black;
-  text-
-  margin: 2px;
+  margin: 3px;
   width: 300px;
   height: 25px;
+  border-radius: 3px;
 
+}
+#componets{
+  width: 80%;
 }
 #termosText{
   font-size:9px;
 
 }
+.title{
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 32px;
+}
+.clone{
+  color: #2A4B7C;
+}
 .buttons{
   display:block;
+  border-radius: 3px;
   margin: 5px auto 10px;
   width: 300px;
   height:25px;
@@ -38,8 +57,9 @@
 
 
 #startScreen{
-  background-image: linear-gradient(to bottom, #F2F2F2, transparent);
+  background: url('../images/background.jpg')
   background-color: #F2F2F2;
-  background-repeat:no-repeat;
+  background-repeat:repeat-y;
+  background-size: cover;
 
 }
