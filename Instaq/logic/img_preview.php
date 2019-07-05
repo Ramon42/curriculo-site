@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title></title>
+  </head>
+
+  <body>
+
+    <?php
+    require_once "../banco.php";
+    require_once "util.php";
+    session_start();
+    $descricao = fromPost("descricao");
+    $local = fromPost("local");
+    if(empty($descricao)){
+      $descricao = "";
+    }
+    if(empty($local)){
+      $local = "";
+    }
+
+    if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] == 0 ) {
+
+        $arquivo_tmp = $_FILES[ 'arquivo' ][ 'tmp_name' ];
+        $nome = $_FILES[ 'arquivo' ][ 'name' ];
+
+        $extensao = pathinfo ( $nome, PATHINFO_EXTENSION );
+        $extensao = strtolower ( $extensao );
+        if ( strstr ( '.jpg;.jpeg;.gif;.png', $extensao ) ) {
+            $novoNome = uniqid ( time () ) . '.' . $extensao;
+
+            // Concatena a pasta com o nome
+            $destino = "../users/".$_SESSION['usuario']."/uploads/".$novoNome;
+            if ( @move_uploaded_file ( $arquivo_tmp, $destino ) ) {
+              setcookie('descricao_temp', $descricao, time()+60*60*7);
+              setcookie('local_temp', $local, time()+60*60*7);
+              setcookie('path_temp', $destino, time()+60*60*7);
+              echo ("<form method='post' enctype='multipart/form-data' action='uploadImg.php'>");
+              echo ("<div class='main_pub'>");
+              echo ($_SESSION['usuario']);
+              echo ("<img src= '".$destino."' atl='preview'>");
+              echo ("Postado em: ".$local."<br>");
+              echo ($descricao);
+              echo ("</div>");
+              echo ("<input type='submit' value='Enviar'>");
+              echo ("</form");
+            }
+        }
+      }
+    ?>
+
+  </body>
+</html>

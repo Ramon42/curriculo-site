@@ -47,7 +47,7 @@
         $html_string .= "Postado em: ".$row['img_local']."<br>";
         $html_string .= $row['img_desc'];
         $html_string .= "</div>";
-        }
+      }
       $html_string .= "</div>";
       echo $html_string;
       ?>

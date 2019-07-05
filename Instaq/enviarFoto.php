@@ -7,11 +7,11 @@
   <body>
     <main>
       <div class="">
-        <form method="post" enctype="multipart/form-data" action="/logic/uploadImg.php">
+        <form method="post" enctype="multipart/form-data" action="/logic/img_preview.php">
            Selecione uma imagem: <input name="arquivo" type="file"><br>
            Descrição: <input type="text" name="descricao"><br>
            Localização: <input type="text" name="local"><br>
-           <input type="submit" value="Enviar">
+           <input type="submit" value="Ver">
         </form>
       </div>
     </main>
