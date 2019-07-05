@@ -22,16 +22,9 @@
           <a href="login.php" id="link_profile">Logout</a>
         </div>
       </form>
+      <a href="enviarFoto.php" class="buttons_large">Enviar uma Foto</a>
     </header>
     <main>
-      <div class="">
-        <form method="post" enctype="multipart/form-data" action="/logic/uploadImg.php">
-           Selecione uma imagem: <input name="arquivo" type="file"><br>
-           Descrição: <input type="text" name="descricao"><br>
-           Localização: <input type="text" name="local"><br>
-           <input type="submit" value="Salvar">
-        </form>
-      </div>
     <div class="">
       <?php
       require_once "banco.php";

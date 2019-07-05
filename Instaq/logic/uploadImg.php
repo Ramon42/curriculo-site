@@ -51,6 +51,7 @@ if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] 
               echo "Erro: ". $e->getMessage();
               die;
             }
+
         }
         else
             echo 'Erro ao salvar o arquivo. Aparentemente você não tem permissão de escrita.<br />';
