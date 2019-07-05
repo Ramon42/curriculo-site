@@ -42,7 +42,6 @@ CREATE TABLE `imagens` (
 INSERT INTO `imagens` (`id_user`, `img_path`, `img_desc`, `img_local`) VALUES
 (5, '../users/testePasta/uploads/15623083305d1eeeea0630b.jpeg', 'foto teste 1', 'localiza bro'),
 (5, '../users/testePasta/uploads/15623083495d1eeefd157a6.jpeg', 'foto teste 2', 'nzei'),
-(5, '../users/testePasta/uploads/15623083635d1eef0bd7bd6.jpeg', 'foto teste 3', 'na casa do caralho'),
 (7, '../users/testinha/uploads/15623110035d1ef95b54fed.png', 'iai meu irmÃ£o aqui Ã© o testinho dois', 'bandeirontes');
 
 -- --------------------------------------------------------
