@@ -32,7 +32,8 @@ CREATE TABLE `imagens` (
   `id_user` int(11) NOT NULL,
   `img_path` varchar(100) NOT NULL,
   `img_desc` varchar(200) DEFAULT NULL,
-  `img_local` varchar(50) DEFAULT NULL
+  `img_local` varchar(50) DEFAULT NULL,
+  `dt_post` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
