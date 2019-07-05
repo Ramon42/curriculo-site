@@ -36,17 +36,6 @@ CREATE TABLE `imagens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `imagens`
---
-
-INSERT INTO `imagens` (`id_user`, `img_path`, `img_desc`, `img_local`) VALUES
-(5, '../users/testePasta/uploads/15623083305d1eeeea0630b.jpeg', 'foto teste 1', 'localiza bro'),
-(5, '../users/testePasta/uploads/15623083495d1eeefd157a6.jpeg', 'foto teste 2', 'nzei'),
-(7, '../users/testinha/uploads/15623110035d1ef95b54fed.png', 'iai meu irmÃ£o aqui Ã© o testinho dois', 'bandeirontes');
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `usuarios`
 --
 
@@ -57,18 +46,6 @@ CREATE TABLE `usuarios` (
   `usuario` varchar(50) NOT NULL,
   `senha` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `nome`, `email`, `usuario`, `senha`) VALUES
-(1, 'ABC junior', 'abc@gmail.com', 'Buster', '1234'),
-(2, 'Ramon Garcia', 'ramon@gmail.com', 'ramon42', '12345'),
-(3, 'Ketilen', 'teste2@hotmail.com', 'ket', '1235'),
-(4, 'teste123', 'alg@gmail.com', 'ramon', '1236'),
-(5, 'Ramon Garcia', 'ramon.g.camargo42@gmail.com', 'testePasta', '12345'),
-(7, 'Teste da Silva Santo', 'teste2IMG@gmail.com', 'testinha', '123');
 
 --
 -- Indexes for dumped tables
