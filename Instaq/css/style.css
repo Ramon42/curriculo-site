@@ -22,12 +22,22 @@
 }
 
 .back-photo{
-  background: url('../images/background.jpg')
+  background: url('../images/background.jpg');
+  background-repeat:repeat-y;
+  background-size: cover;
 }
-#mainSection{
+.erro{
   margin: 0 auto;
-  width: 350px;
+  width: 75%;
+  font-size: 12px;
+  background-color: RGBa(255, 255, 255, 80%);
+  border-radius: 3px;
+  color: red;
+}
+.mainSection{
+  margin: 0 auto;
   margin-top: 20px;
+  width: 25%;
   font-family: sans-serif;
   text-align: center;
   background-color: RGBa(255, 255, 255, 45%);
@@ -35,14 +45,30 @@
   padding-bottom: 5px;
   border: 1px outset #EAEAEA;
 }
-#mainSection input[type='text'], input[type='password']{
+
+img {
+  width: 98%;
+  height: auto;
+}
+.main_pub{
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 30%;
+  font-family: sans-serif;
+  text-align: center;
+  background-color: RGBa(255, 255, 255, 45%);
+  border-radius: 3px;
+  padding-bottom: 5px;
+  border: 1px outset #EAEAEA;
+}
+
+.mainSection input[type='text'], input[type='password']{
   padding: 2px;
   border: 1px outset #EAEAEA;
   margin: 3px;
-  width: 300px;
+  width: 75%;
   height: 25px;
   border-radius: 3px;
-
 }
 #componets{
   width: 80%;
@@ -58,11 +84,13 @@
 .clone{
   color: #2A4B7C;
 }
-.buttons{
+
+.buttons_large{
   display:block;
   border-radius: 3px;
+  border: 0px;
   margin: 5px auto 10px;
-  width: 300px;
+  width: 75%;
   height:25px;
   background-color: #2A4B7C;
   text-align: center;
@@ -70,16 +98,61 @@
   color: white;
   font-weight:bold;
   line-height: 150%;
+  cursor: pointer;
 }
-  .buttons-2{
-      width: 130px;
+  .buttons_large-2{
+      width: 35%;
   }
+.buttons_search{ /*ARRUMAR*/
+  display:block;
+  float: right;
+  position: sticky;
+  border-radius: 3px;
+  border: 0px;
+  width: 25px;
+  height:25px;
+  margin: 0 auto;
+  background-color: #2A4B7C;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+.top_user_bar{
+  background-color: RGBa(50,153,204, 45%);
+  border-radius: 3px;
+  width: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+}
 
-
-#startScreen{
-  background: url('../images/background.jpg')
-  background-color: #F2F2F2;
-  background-repeat:repeat-y;
-  background-size: cover;
-
+#align_search_bar{
+  margin: 0 auto;
+  width: 25%;
+}
+#link_profile{
+  display:block;
+  border-radius: 3px;
+  border: 0px;
+  margin: auto 200%;
+  width: 200px;
+  height:25px;
+  background-color: #2A4B7C;
+  text-align: center;
+  text-decoration:none;
+  color: black;
+  font-weight:bold;
+  line-height: 150%;
+  cursor: pointer;
+}
+.top_user_bar input[type='text']{
+  padding: 2px;
+  text-align: center;
+  border: 1px outset #EAEAEA;
+  margin: 3px;
+  left: 41.66%;
+  width: 350px;
+  height: 20px;
+  border-radius: 3px;
+  position: sticky;
 }
