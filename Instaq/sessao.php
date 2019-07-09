@@ -1,29 +1,36 @@
 <?php
 require_once "banco.php";
+require_once "logic/util.php";
 session_start();
-$usuario = $_POST['usuario'];
-$senha = $_POST['senha'];
+$usuario = fromPost('usuario');
+$senha = fromPost('senha');
+
+$messages = "";
+if (empty($usuario)) {
+  $messages .= ("<li>Usuário obrigatório</li>");
+}
+if (empty($senha)) {
+  $messages .= ("<li>Senha obrigatória</li>");
+}
+if (strlen($messages) > 0){
+  $messages = "<ul>".$messages."</ul>";
+  toSession("messages", $messages);
+  toSession("usuario", $usuario);
+  header("Location: login.php");   //https://stackoverflow.com/questions/2112373/php-page-redirect
+  exit();
+}
 
 try{
-      $sql = "SELECT * FROM usuarios WHERE usuario = :usuario AND senha = :senha";
+      $sql = "SELECT nome, email, usuario FROM usuarios WHERE usuario = '$usuario' AND senha = '$senha'";
       $stmt = getConnection()->prepare($sql);
-      $stmt->bindParam(':usuario', $usuario);
-      $stmt->bindParam(':senha', $senha);
       $stmt->execute();
-      $resultados = $stmt->fetchAll();
-      if(count($resultados)){
-        $_SESSION['usuario'] = $usuario;
-        $_SESSION['senha'] = $senha;
-        setcookie('usuario', $usuario, time()+60*60*7);
-        if (isset($_POST['lembrar'])){
-          setcookie('senha', $senha, time()+60*60*7);
-        }
-        header("location:pag_principal.php");
-        die;
+      $resultados = $stmt->fetch();
+      if($resultados){
+        toSession("autenticado", $resultados);
+        header("Location: pag_principal.php");
       }
       else{
-        unset ($_SESSION['usuario']);
-        unset ($_SESSION['senha']);
+        toSession("messages", "Usuário/Senha incorretos.");
         header('location:login.php');
       }
     }catch(PDOException $e){

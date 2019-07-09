@@ -9,38 +9,42 @@
   <body>
 
 
-<?php
-require_once "../banco.php";
-require_once "util.php";
-session_start();
-$descricao = $_COOKIE['descricao_temp'];
-$local = $_COOKIE['local_temp'];
-$destino = $_COOKIE['path_temp'];
+    <?php
+    require_once "../banco.php";
+    require_once "util.php";
+    session_start();
+    $descricao = $_COOKIE['descricao_temp'];
+    $local = $_COOKIE['local_temp'];
+    $destino = $_COOKIE['path_temp'];
+    $user = $_SESSION["autenticado"];
+    if (!isset($user)){
+        header("Location: login.php");
+        exit();
+    }
 
-try {
-  $sql = "SELECT id FROM usuarios WHERE usuario = '".$_SESSION['usuario']."'";
-  $stmt = getConnection()->prepare($sql);
-  $stmt->execute();
-  $id_temp = $stmt->fetch();
-  echo $id_temp["id"];
-}catch(PDOException $e){
-  echo "Erro: ". $e->getMessage();
-  die;
-}
-try{
-  $sql = 'INSERT INTO imagens(id_user, img_path, img_desc, img_local)' .
-          'VALUES (:id, :img_path, :img_desc, :img_local)';
-  $stmt = getConnection()->prepare($sql);
-  $stmt->bindParam(':id', $id_temp[0]);
-  $stmt->bindParam(':img_path', $destino);
-  $stmt->bindParam(':img_desc', $descricao);
-  $stmt->bindParam(':img_local', $local);
-  $stmt->execute();
-}catch(PDOException $e){
-  echo "Erro: ". $e->getMessage();
-  die;
-}
+    try {
+      $sql = "SELECT id FROM usuarios WHERE usuario = '".$user[2]."'";
+      $stmt = getConnection()->prepare($sql);
+      $stmt->execute();
+      $id_temp = $stmt->fetch();
+    }catch(PDOException $e){
+      echo "Erro: ". $e->getMessage();
+      die;
+    }
+    try{
+      $sql = 'INSERT INTO imagens(id_user, img_path, img_desc, img_local)' .
+              'VALUES (:id, :img_path, :img_desc, :img_local)';
+      $stmt = getConnection()->prepare($sql);
+      $stmt->bindParam(':id', $id_temp[0]);
+      $stmt->bindParam(':img_path', $destino);
+      $stmt->bindParam(':img_desc', $descricao);
+      $stmt->bindParam(':img_local', $local);
+      $stmt->execute();
+    }catch(PDOException $e){
+      echo "Erro: ". $e->getMessage();
+      die;
+    }
 
-?>
+    ?>
 </body>
 </html>

@@ -15,16 +15,12 @@ function toSession($key, $value){
   $_SESSION[$key] = $value;
 }
 
-function setSession($key, $value){
-  session_start();
-  $_SESSION[$key] = $value;
-}
 function getUser(){
   session_start();
-  if(!isset($_SESSION) || !isset($_SESSION["login"])){
+  if (!isset($_SESSION) ||!isset($_SESSION["autenticado"])){
     return null;
   }
-  return $_SESSION["login"];
+  return $_SESSION["autenticado"];
 }
 
 function user_logged(){
@@ -32,8 +28,9 @@ function user_logged(){
 }
 function fromSession($param){
   $value = "";
-  session_start();
-  if (isset($_SESSION) && isset($_SESSION[$param])){
+  if (!isset($_SESSION))
+    session_start();
+  if (isset($_SESSION[$param])){
     $value = $_SESSION[$param];
     unset($_SESSION[$param]);
   }

@@ -1,3 +1,13 @@
+<?php
+  require_once "logic/util.php";
+  session_start();
+  $user = $_SESSION["autenticado"];
+  if (!isset($user)){
+      header("Location: login.php");
+      exit();
+  }
+  echo($user[0]);
+?>
 <!DOCTYPE html>
 <html lang="pt" dir="ltr">
   <head>
@@ -16,7 +26,7 @@
           <a href="perfil.php" id="link_profile">
             <?php
               session_start();
-              echo ("Usuário:" .$_SESSION['usuario']);
+              echo ("Usuário:" .$user[0]);
             ?>
           </a>
           <a href="login.php" id="link_profile">Logout</a>
@@ -29,11 +39,11 @@
       <?php
       require_once "banco.php";
       require_once "logic/util.php";
-      $sql = "select id_user, img_path, img_desc, img_local from imagens";
+      $sql = "select id_user, img_path, img_desc, img_local from imagens ORDER BY dt_post DESC";
       $html_string = "<div>";
       foreach(getConnection()->query($sql) as $row){
         try {
-          $sql2 = "SELECT us.usuario FROM usuarios AS us, imagens AS img WHERE ".$row['id_user']." = us.id ";
+          $sql2 = "SELECT us.usuario FROM usuarios AS us, imagens AS img WHERE ".$row['id_user']." = us.id";
           $stmt = getConnection()->prepare($sql2);
           $stmt->execute();
           $user_temp = $stmt->fetch();

@@ -15,11 +15,16 @@
     session_start();
     $descricao = fromPost("descricao");
     $local = fromPost("local");
+    $user = $_SESSION["autenticado"];
+    if (!isset($user)){
+        header("Location: login.php");
+        exit();
+    }
     if(empty($descricao)){
-      $descricao = "";
+      $descricao = " ";
     }
     if(empty($local)){
-      $local = "";
+      $local = "não identificado";
     }
 
     if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] == 0 ) {
@@ -33,14 +38,14 @@
             $novoNome = uniqid ( time () ) . '.' . $extensao;
 
             // Concatena a pasta com o nome
-            $destino = "../users/".$_SESSION['usuario']."/uploads/".$novoNome;
+            $destino = "../users/".$user[2]."/uploads/".$novoNome;
             if ( @move_uploaded_file ( $arquivo_tmp, $destino ) ) {
               setcookie('descricao_temp', $descricao, time()+60*60*7);
               setcookie('local_temp', $local, time()+60*60*7);
               setcookie('path_temp', $destino, time()+60*60*7);
               echo ("<form method='post' enctype='multipart/form-data' action='uploadImg.php'>");
               echo ("<div class='main_pub'>");
-              echo ($_SESSION['usuario']);
+              echo ($user[0]);
               echo ("<img src= '".$destino."' atl='preview'>");
               echo ("Postado em: ".$local."<br>");
               echo ($descricao);
