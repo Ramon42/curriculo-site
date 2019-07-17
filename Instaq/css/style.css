@@ -53,13 +53,18 @@ img {
 .main_pub{
   margin: 0 auto;
   margin-top: 20px;
-  width: 30%;
+  width: 45%;
   font-family: sans-serif;
   text-align: center;
-  background-color: RGBa(255, 255, 255, 45%);
+  background-color: RGBa(255, 255, 255, 55%);
   border-radius: 3px;
   padding-bottom: 5px;
   border: 1px outset #EAEAEA;
+}
+.main_pub_comment{
+  margin-top: 2px;
+  width: 90%;
+  background-color: RGBa(255, 255, 255, 75%);
 }
 
 .mainSection input[type='text'], input[type='password']{
@@ -135,7 +140,7 @@ img {
   border-radius: 3px;
   border: 0px;
   margin: auto 200%;
-  width: 200px;
+  width: 35%;
   height:25px;
   background-color: #2A4B7C;
   text-align: center;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17-Jul-2019 às 08:11
+-- Tempo de geração: 17-Jul-2019 às 09:56
 -- Versão do servidor: 10.3.16-MariaDB
 -- versão do PHP: 7.3.7
 
@@ -35,6 +35,17 @@ CREATE TABLE `comentarios_imgs` (
   `dt_comentario` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `comentarios_imgs`
+--
+
+INSERT INTO `comentarios_imgs` (`id_img`, `id_user_comentario`, `comentario`, `dt_comentario`) VALUES
+(1, 8, 'adorei a foto, posta mais', '2019-07-17 03:37:29'),
+(1, 9, 'gostem hem', '2019-07-17 04:24:52'),
+(2, 9, 'ala hacker hem', '2019-07-17 04:30:54'),
+(2, 8, 'sÃ³ nos compiuter', '2019-07-17 04:31:25'),
+(2, 12, 'formata meu pc??', '2019-07-17 04:34:25');
+
 -- --------------------------------------------------------
 
 --
@@ -55,7 +66,8 @@ CREATE TABLE `imagens` (
 --
 
 INSERT INTO `imagens` (`id_user`, `id_img`, `img_path`, `img_desc`, `img_local`, `dt_post`) VALUES
-(8, 1, '../users/ramon/uploads/15633410045d2eb0ccd0812.jpg', 'foto legal que tirei do zap', 'localiza ai menÃ³', '2019-07-17 02:23:26');
+(8, 1, '../users/ramon/uploads/15633410045d2eb0ccd0812.jpg', 'foto legal que tirei do zap', 'localiza ai menÃ³', '2019-07-17 02:23:26'),
+(9, 2, '../users/teste/uploads/15633486215d2ece8d43a17.png', 'uma foto bem legal hem adorei', 'UENP', '2019-07-17 04:30:26');
 
 -- --------------------------------------------------------
 
@@ -76,18 +88,13 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `usuario`, `senha`) VALUES
-(8, 'Ramon Garcia', 'ramon.g.camargo42@gmail.com', 'ramon', '123');
+(8, 'Ramon Garcia', 'ramon.g.camargo42@gmail.com', 'ramon', '123'),
+(9, 'Ramon Garcia Camargo', 'ramon.g.c@hotmail.com', 'teste', '1234'),
+(12, 'Joao', 'c29gameplay@gmail.com', 'juaozinho123', '123');
 
 --
 -- Índices para tabelas despejadas
 --
-
---
--- Índices para tabela `comentarios_imgs`
---
-ALTER TABLE `comentarios_imgs`
-  ADD PRIMARY KEY (`id_img`,`id_user_comentario`),
-  ADD UNIQUE KEY `id_img` (`id_img`);
 
 --
 -- Índices para tabela `imagens`
@@ -112,13 +119,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `imagens`
 --
 ALTER TABLE `imagens`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
