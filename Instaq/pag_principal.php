@@ -39,7 +39,7 @@
       <?php
       require_once "banco.php";
       require_once "logic/util.php";
-      $sql = "select id_user, img_path, img_desc, img_local from imagens ORDER BY dt_post DESC";
+      $sql = "select id_user, id_img, img_path, img_desc, img_local from imagens ORDER BY dt_post DESC";
       $html_string = "<div>";
       foreach(getConnection()->query($sql) as $row){
         try {
@@ -56,8 +56,14 @@
         $html_string .= "<img src= '".$row['img_path']."' atl='".$row['img_desc']."'>";
         $html_string .= "Postado em: ".$row['img_local']."<br>";
         $html_string .= $row['img_desc'];
+        $html_string .= "<form method= 'post' enctype='multipart/form-data' action='/logic/enviarComentario.php'>";
+        $html_string .=   "<input type='text' name='comentario'>";
+        $html_string .=   "<input type='submit' value='Comentar'>";
+        $html_string .=   "<input type='hidden' name='img_id' value='".$row['id_img']."'>";
+        $html_string .= "</form>";
         $html_string .= "</div>";
       }
+
       $html_string .= "</div>";
       echo $html_string;
       ?>

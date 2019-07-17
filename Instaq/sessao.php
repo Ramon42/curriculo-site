@@ -21,7 +21,7 @@ if (strlen($messages) > 0){
 }
 
 try{
-      $sql = "SELECT nome, email, usuario FROM usuarios WHERE usuario = '$usuario' AND senha = '$senha'";
+      $sql = "SELECT nome, email, usuario, id FROM usuarios WHERE usuario = '$usuario' AND senha = '$senha'";
       $stmt = getConnection()->prepare($sql);
       $stmt->execute();
       $resultados = $stmt->fetch();
