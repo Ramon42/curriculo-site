@@ -1,5 +1,5 @@
 <?php
-  require_once "logic/util.php";
+  require_once "bootstrap.php";
   session_start();
   $user = $_SESSION["autenticado"];
   if (!isset($user)){
@@ -33,12 +33,15 @@
         </div>
       </form>
       <a href="enviarFoto.php" class="buttons_large buttons_large-2">Enviar uma Foto</a>
+
+      <!-- TESTE DE PÁGINAS SEPARADAS -->
+      <a href="nav.php?page=perfil" class="button">PERFIL</a>
+      <!---->
+
     </header>
     <main class="mainSession">
     <div>
       <?php
-      require_once "banco.php";
-      require_once "logic/util.php";
       $sql = "select id_user, id_img, img_path, img_desc, img_local from imagens ORDER BY dt_post DESC";
       $html_string = "<div>";
       foreach(getConnection()->query($sql) as $row){

@@ -21,6 +21,15 @@
   }
 }
 
+/*teste tabela colunas de fotos */
+table, th, td {
+  border: 1px solid black;
+}
+th, td{
+  width: 33.33%;
+}
+/**/
+
 .back-photo{
   background: url('../images/background.jpg');
   background-repeat:repeat-y;

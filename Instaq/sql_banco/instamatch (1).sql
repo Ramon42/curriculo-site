@@ -39,13 +39,6 @@ CREATE TABLE `comentarios_imgs` (
 -- Extraindo dados da tabela `comentarios_imgs`
 --
 
-INSERT INTO `comentarios_imgs` (`id_img`, `id_user_comentario`, `comentario`, `dt_comentario`) VALUES
-(1, 8, 'adorei a foto, posta mais', '2019-07-17 03:37:29'),
-(1, 9, 'gostem hem', '2019-07-17 04:24:52'),
-(2, 9, 'ala hacker hem', '2019-07-17 04:30:54'),
-(2, 8, 'sÃ³ nos compiuter', '2019-07-17 04:31:25'),
-(2, 12, 'formata meu pc??', '2019-07-17 04:34:25');
-
 -- --------------------------------------------------------
 
 --
@@ -65,10 +58,6 @@ CREATE TABLE `imagens` (
 -- Extraindo dados da tabela `imagens`
 --
 
-INSERT INTO `imagens` (`id_user`, `id_img`, `img_path`, `img_desc`, `img_local`, `dt_post`) VALUES
-(8, 1, '../users/ramon/uploads/15633410045d2eb0ccd0812.jpg', 'foto legal que tirei do zap', 'localiza ai menÃ³', '2019-07-17 02:23:26'),
-(9, 2, '../users/teste/uploads/15633486215d2ece8d43a17.png', 'uma foto bem legal hem adorei', 'UENP', '2019-07-17 04:30:26');
-
 -- --------------------------------------------------------
 
 --
@@ -86,11 +75,6 @@ CREATE TABLE `usuarios` (
 --
 -- Extraindo dados da tabela `usuarios`
 --
-
-INSERT INTO `usuarios` (`id`, `nome`, `email`, `usuario`, `senha`) VALUES
-(8, 'Ramon Garcia', 'ramon.g.camargo42@gmail.com', 'ramon', '123'),
-(9, 'Ramon Garcia Camargo', 'ramon.g.c@hotmail.com', 'teste', '1234'),
-(12, 'Joao', 'c29gameplay@gmail.com', 'juaozinho123', '123');
 
 --
 -- Índices para tabelas despejadas

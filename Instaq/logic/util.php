@@ -1,9 +1,15 @@
 <?php
-function fromGet($param){
-    if (isset($_GET[$param])){
-        return $_GET[$param];
-    }
+function sanitize_unsafe($value) {
+   $search = array("\\",  "\x00", "\n",  "\r",  "'",  '"', "\x1a");
+   $replace = array("\\\\","\\0","\\n", "\\r", "\'", '\"', "\\Z");
+   return str_replace($search, $replace, $value);
 }
+
+function fromGet($param){
+   if (isset($_GET[$param]))
+      return sanitize_unsafe($_GET[$param]);
+}
+
 function fromPost($param){
     if (isset($_POST[$param])){
         return $_POST[$param];

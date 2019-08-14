@@ -17,7 +17,7 @@
     $stmt->bindParam(':id_user', $user[3]);
     $stmt->bindParam(':comentario', $comentario);
     $stmt->execute();
-    echo "Comentario enviado: ". $comentario;
+    header("Location: ../pag_principal.php");
   }catch(PDOException $e){
     echo "Erro: ". $e->getMessage();
     die;
