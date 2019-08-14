@@ -19,23 +19,22 @@
   </head>
   <body class="back-photo">
     <header class="top_user_bar">
-      <form id="align_search_bar" action="index.html" method="post">
-        <div>
+      <div>
+        <form id="align_search_bar" action="logic/buscar_usuario.php" method="post">
           <input type="text" name="buscar" required="false" placeholder="Buscar">
           <label for="buscar"><button type="submit" class="buttons_search" name="button"><i class="fas fa-search"></i></button></label>
-          <a href="perfil.php" id="link_profile">
-            <?php
-              session_start();
-              echo ("Usuário:" .$user[0]);
-            ?>
-          </a>
-          <a href="login.php" id="link_profile">Logout</a>
-        </div>
-      </form>
+        </form>
+        <a href="perfil.php" id="link_profile">
+          <?php
+            echo ("Usuário:" .$user['usuario']);
+          ?>
+        </a>
+        <a href="login.php" class = "buttons_large" id="link_profile">Logout</a>
+      </div>
       <a href="enviarFoto.php" class="buttons_large buttons_large-2">Enviar uma Foto</a>
 
       <!-- TESTE DE PÁGINAS SEPARADAS -->
-      <a href="nav.php?page=perfil" class="button">PERFIL</a>
+      <a href="nav.php?page=perfil" class="buttons_large">PERFIL</a>
       <!---->
 
     </header>
