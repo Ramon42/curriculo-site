@@ -8,12 +8,12 @@
   <div class="infos_perfil">
 
   </div>
+  <div class="seguidores">
+    <a href="nav.php?page=new_follow" class="button">Ver Usuários</a>
+  </div>
   <div class="suas_fotos">
     <?php
-      session_start();
-      $user = $_SESSION["autenticado"];
-        $user[3];
-      $sql = "SELECT img_path, img_desc, img_local FROM imagens WHERE id_user = ".$user[3]." ORDER BY dt_post DESC";
+      $sql = "SELECT img_path, img_desc, img_local FROM imagens WHERE id_user = ".$user['id']." ORDER BY dt_post DESC";
       $column_count = 0;
       $html_string = "<table class=''>";
       $html_string .="<tr>";

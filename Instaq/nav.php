@@ -18,7 +18,8 @@
   <body class="back-photo">
     <main class="mainSession">
       <?php
-
+        session_start();
+        $user = $_SESSION["autenticado"];
         if (file_exists($file))
           include $file;
         else
