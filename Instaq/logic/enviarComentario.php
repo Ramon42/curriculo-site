@@ -8,6 +8,10 @@
       exit();
   }
   $comentario = fromPost("comentario");
+  if (empty($comentario)){
+    header("Location: ../pag_principal.php");
+    exit();
+  }
   $id_img = fromPost("img_id");
   try{
     $sql = "INSERT INTO comentarios_imgs (id_img, id_user_comentario, comentario)".

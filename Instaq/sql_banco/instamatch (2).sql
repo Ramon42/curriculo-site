@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 14-Ago-2019 às 11:13
+-- Generation Time: 15-Ago-2019 às 01:34
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.3
 
@@ -39,9 +39,6 @@ CREATE TABLE `comentarios_imgs` (
 -- Extraindo dados da tabela `comentarios_imgs`
 --
 
-INSERT INTO `comentarios_imgs` (`id_img`, `id_user_comentario`, `comentario`, `dt_comentario`) VALUES
-(3, 13, 'adorei minha propria foto', '2019-08-14 02:33:44');
-
 -- --------------------------------------------------------
 
 --
@@ -61,12 +58,6 @@ CREATE TABLE `imagens` (
 -- Extraindo dados da tabela `imagens`
 --
 
-INSERT INTO `imagens` (`id_user`, `id_img`, `img_path`, `img_desc`, `img_local`, `dt_post`) VALUES
-(13, 3, '../users/ramon42/uploads/15657608125d539d2c1cf52.jpg', 'foto teste1', 'algum lugar', '2019-08-14 02:33:34'),
-(13, 4, '../users/ramon42/uploads/15657628145d53a4febe4f5.png', 'outra foto teste colunas', '**', '2019-08-14 03:06:56'),
-(13, 5, '../users/ramon42/uploads/15657637735d53a8bd42280.jpg', 'teste coluna2', 'das', '2019-08-14 03:22:55'),
-(13, 6, '../users/ramon42/uploads/15657638325d53a8f829e6c.png', ' ', 'nÃ£o identificado', '2019-08-14 03:23:53');
-
 -- --------------------------------------------------------
 
 --
@@ -82,8 +73,6 @@ CREATE TABLE `seguidores` (
 -- Extraindo dados da tabela `seguidores`
 --
 
-INSERT INTO `seguidores` (`id_user`, `id_user_segue`) VALUES
-(13, 14);
 
 -- --------------------------------------------------------
 
@@ -103,9 +92,31 @@ CREATE TABLE `usuarios` (
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `email`, `usuario`, `senha`) VALUES
-(13, 'Ramon', 'c29gameplay@gmail.com', 'ramon42', '12345'),
-(14, 'tielle oliveira', 'tiele@gmail.com', 'tiele123', '12345');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_postagens`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_postagens` (
+`id_user_segue` int(11)
+,`id_user` int(11)
+,`id_img` int(11)
+,`img_path` varchar(100)
+,`img_desc` varchar(200)
+,`img_local` varchar(50)
+,`dt_post` datetime
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_postagens`
+--
+DROP TABLE IF EXISTS `v_postagens`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_postagens`  AS  select `s`.`id_user_segue` AS `id_user_segue`,`s`.`id_user` AS `id_user`,`i`.`id_img` AS `id_img`,`i`.`img_path` AS `img_path`,`i`.`img_desc` AS `img_desc`,`i`.`img_local` AS `img_local`,`i`.`dt_post` AS `dt_post` from (`seguidores` `s` left join `imagens` `i` on((`s`.`id_user_segue` = `i`.`id_user`))) order by `i`.`dt_post` desc ;
 
 --
 -- Indexes for dumped tables
@@ -140,13 +151,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `imagens`
 --
 ALTER TABLE `imagens`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- Constraints for dumped tables

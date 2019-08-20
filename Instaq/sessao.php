@@ -27,7 +27,7 @@ try{
       $resultados = $stmt->fetch();
       if($resultados){
         toSession("autenticado", $resultados);
-        header("Location: pag_principal.php");
+        header("Location: nav.php?page=main_page");
       }
       else{
         toSession("messages", "Usuário/Senha incorretos.");
