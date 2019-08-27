@@ -1,5 +1,23 @@
-
-
+.enviarFoto{
+  margin: 0 auto;
+  width: 30%;
+  margin: auto;
+  padding: 2px;
+  text-align:center;
+  border-radius: 3px;
+  border: 1px outset #EAEAEA;
+  background-color: RGBa(255, 255, 255, 45%);
+}
+.txtEnviarFoto{
+  display: inline-block;
+  width: 75%;
+  height: 25px;
+  margin: auto;
+  padding: 2px;
+  text-align: center;
+  border-radius: 3px;
+  border: 1px outset #EAEAEA;
+}
 
 
 .mainSection input[type='text'], input[type='password']{
@@ -89,6 +107,10 @@ th, td{
   width: 33.33%;
 }
 /**/
+
+#txt_bio{
+  width: 80%;
+}
 .buttons_large{
   display:block;
   border-radius: 3px;

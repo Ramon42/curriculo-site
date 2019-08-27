@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt" dir="ltr">
   <head>
+    <link rel="stylesheet" href="css/style.css">
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body>
+  <body class="back-photo">
     <main>
-      <div class="">
-        <form method="post" enctype="multipart/form-data" action="/logic/img_preview.php">
-           Selecione uma imagem: <input name="arquivo" type="file"><br>
-           Descrição: <input type="text" name="descricao"><br>
-           Localização: <input type="text" name="local"><br>
-           <input type="submit" value="Ver">
+      <div class="mainSession">
+        <form method="post" class="enviarFoto" enctype="multipart/form-data" action="/logic/img_preview.php">
+           <label for="txt_arq">Selecione uma imagem: </label>
+           <input name="arquivo" id="txt_arq" type="file"><br>
+           <label for="txt_desc">Descrição: </label><br>
+           <input type="text" id="txt_desc" name="descricao" class="txtEnviarFoto"><br>
+           <label for="txt_local">Localização: </label><br>
+           <input type="text" id="txt_local" name="local" class="txtEnviarFoto"><br>
+           <input type="submit" class="buttons_large buttons_large-2" value="Ver">
         </form>
       </div>
     </main>

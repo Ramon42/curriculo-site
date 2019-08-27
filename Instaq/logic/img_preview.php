@@ -7,7 +7,7 @@
     <title></title>
   </head>
 
-  <body>
+  <body class="back-photo">
 
     <?php
     require_once "../banco.php";
@@ -50,7 +50,7 @@
               echo ("Postado em: ".$local."<br>");
               echo ($descricao);
               echo ("</div>");
-              echo ("<input type='submit' value='Enviar'>");
+              echo ("<input type='submit' class='buttons_large buttons_large-2' value='Enviar'>");
               echo ("</form");
             }
         }

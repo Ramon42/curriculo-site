@@ -2,7 +2,7 @@
   require_once "../bootstrap.php";
   $search_user = fromPost("buscar");
   if(empty($search_user)){
-    header ("../nav.php?page=perfil");
+    header ("Location: ../nav.php?page=perfil");
   }
   else{
     $sql = "SELECT id, usuario FROM usuarios WHERE usuario LIKE '%$search_user%'";

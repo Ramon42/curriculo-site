@@ -40,6 +40,7 @@
       $stmt->bindParam(':img_desc', $descricao);
       $stmt->bindParam(':img_local', $local);
       $stmt->execute();
+      header ("Location: ../nav.php?page=main_page");
     }catch(PDOException $e){
       echo "Erro: ". $e->getMessage();
       die;

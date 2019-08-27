@@ -12,7 +12,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <title>Página principal</title>
   </head>
@@ -60,6 +60,10 @@
             $html_string .=   "<br>";
             $html_string .="</div>";
           }
+          //CREATE VIEW v_post AS SELECT img.id_user, s.id_user_segue, u.usuario, img.img_path, img.img_desc, img.img_local, cm.id_user_comentario, cm.comentario
+          //FROM comentarios_imgs cm, imagens img, seguidores s, usuarios u
+          //WHERE img.id_user = s.id_user_segue AND u.id = img.id_user AND u.id = cm.id_user_comentario
+          //ORDER BY img.dt_post, cm.dt_comentario;
         }catch(PDOException $e){
           echo "Erro: ". $e->getMessage();
           die;

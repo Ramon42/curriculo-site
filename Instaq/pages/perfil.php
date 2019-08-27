@@ -8,6 +8,9 @@
   <div class="infos_perfil">
 
   </div>
+  <div class="">
+    <a href="nav.php?page=editar_perfil">Editar Perfil</a>
+  </div>
   <div class="seguidores">
     <a href="nav.php?page=new_follow" class="button">Ver Usuários</a>
   </div>
