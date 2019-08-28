@@ -8,7 +8,7 @@
   <body class="back-photo">
     <main>
       <div class="mainSession">
-        <form method="post" class="enviarFoto" enctype="multipart/form-data" action="/logic/img_preview.php">
+        <form method="post" class="enviarFoto" enctype="multipart/form-data" action="logic/img_preview.php">
           <a href="../nav.php?page=main_page" class="top_bar_back_button" name="back_button"><i class="fas fa-arrow-left"></i></a>
            <label for="txt_arq">Selecione uma imagem: </label>
            <input name="arquivo" id="txt_arq" type="file"><br>

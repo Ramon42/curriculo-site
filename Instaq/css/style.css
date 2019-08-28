@@ -193,6 +193,7 @@ img {
 }
 .main_pub_comment{
   margin-top: 2px;
+  word-wrap: break-word;
   width: 90%;
   background-color: RGBa(255, 255, 255, 75%);
 }

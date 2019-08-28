@@ -19,7 +19,7 @@
 <main class="mainSession">
 <div>
   <?php
-  $sql = "SELECT s.id_user_segue, img.id_user, img.id_img, img.img_path, img.img_desc, img.img_local FROM seguidores s, imagens img WHERE s.id_user = ".$user['id']." AND (img.id_user = s.id_user_segue OR img.id_user = ".$user['id'].") ORDER BY dt_post DESC";
+  $sql = "SELECT s.id_user_segue, img.id_user, img.id_img, img.img_path, img.img_desc, img.img_local FROM seguidores s, imagens img WHERE s.id_user = ".$user['id']." AND img.id_user = s.id_user_segue ORDER BY dt_post DESC";
   $html_string = "<div>";
   foreach (getConnection()->query($sql) as $row){ //checa usuários seguidos
     try {
@@ -36,7 +36,7 @@
     $html_string .=   "<img src= '".$row['img_path']."' atl='".$row['img_desc']."'>";
     $html_string .=   "Postado em: ".$row['img_local']."<br>";
     $html_string .=   $row['img_desc'];
-    $html_string .=   "<form method= 'post' class='main_pub main_pub_comment enctype='multipart/form-data' action='/logic/enviarComentario.php'>";
+    $html_string .=   "<form method= 'post' class='main_pub main_pub_comment enctype='multipart/form-data' action='../logic/enviarComentario.php'>";
     $html_string .=     "<input type='text' name='comentario'>";
     $html_string .=     "<input type='submit' value='Comentar'>";
     $html_string .=     "<input type='hidden' name='img_id' value='".$row['id_img']."'>";

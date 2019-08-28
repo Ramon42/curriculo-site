@@ -1,7 +1,7 @@
 <?php
 function sanitize_unsafe($value) {
-   $search = array("\\",  "\x00", "\n",  "\r",  "'",  '"', "\x1a");
-   $replace = array("\\\\","\\0","\\n", "\\r", "\'", '\"', "\\Z");
+   $search = array("\\",  "\x00", "\n",  "\r",  "'",  '"', "\x1a", "<?php");
+   $replace = array("\\\\","\\0","\\n", "\\r", "\'", '\"', "\\Z", "//<?php");
    return str_replace($search, $replace, $value);
 }
 

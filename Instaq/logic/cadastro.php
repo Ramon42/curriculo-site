@@ -89,6 +89,11 @@ try {
     $stmt->bindParam(':bio', $default_bio);
     $stmt->bindParam(':img_perfil', $default_profile_img);
     $stmt->execute();
+    $sql = "INSERT INTO seguidores (id_user, id_user_segue) VALUES(:id, :id_segue)";
+    $stmt = getConnection()->prepare($sql);
+    $stmt->bindParam(':id', $id_temp[0]);
+    $stmt->bindParam(':id_segue', $id_temp[0]);
+    $stmt->execute();
   } catch (PDOException $e) {
     echo "Erro: ". $e->getMessage();
     die;

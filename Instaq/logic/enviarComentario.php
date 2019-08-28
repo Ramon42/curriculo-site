@@ -9,7 +9,7 @@
   }
   $comentario = fromPost("comentario");
   if (empty($comentario)){
-    header ("../nav.php?page=main_page");
+    header ("location: ../nav.php?page=main_page");
     exit();
   }
   $id_img = fromPost("img_id");
@@ -21,7 +21,7 @@
     $stmt->bindParam(':id_user', $user[3]);
     $stmt->bindParam(':comentario', $comentario);
     $stmt->execute();
-    header ("../nav.php?page=main_page");
+    header ("location: ../nav.php?page=main_page");
   }catch(PDOException $e){
     echo "Erro: ". $e->getMessage();
     die;
