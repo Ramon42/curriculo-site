@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
-session_unset();
+session_start();
+session_destroy();
+require_once("logic/util.php");
 ?>
 <html lang=pt dir="ltr">
   <head>
@@ -16,12 +18,13 @@ session_unset();
       <section class="mainSection">
         <header>
           <h1 class="title"><i class="fas fa-camera-retro"></i>Insta<span class="clone">Match</span></h1>
+          <h2 class="erro"><?=fromSession("messages")?></h2>
           <h3>Entre para ver fotos e vídeos dos seus amigos</h3>
         </header>
         <div>
           <form action="sessao.php" method="POST">
             <div>
-              <input type="text" id = "usuario" name="usuario" placeholder="Nome de usuário">
+              <input type="text" id = "usuario" name="usuario" value="<?=fromSession("usuario")?>" placeholder="Nome de usuário">
             </div>
             <div>
               <input type="password" id = "senha" name="senha" placeholder="Senha">

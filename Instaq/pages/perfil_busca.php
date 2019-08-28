@@ -1,5 +1,7 @@
 <?php
-  $sql = "SELECT bio, img_perfil FROM perfil WHERE id = ".$user['id']."";
+
+  $id = fromGet("id_busca");
+  $sql = "SELECT bio, img_perfil FROM perfil WHERE id = ".$id."";
   foreach(getConnection()->query($sql) as $row){
     $bio = $row['bio'];
     $img_perfil = $row['img_perfil'];
@@ -14,19 +16,18 @@
     <div class="descricao_perfil">
       <p><?php echo($bio); ?></p>
     </div>
-    <div class="infos_perfil">
-
-    </div>
     <div class="">
-      <a href="nav.php?page=editar_perfil" class="buttons_large buttons_profile">Editar Perfil</a>
+      <form method='POST' action='../logic/seguir_user.php'>
+        <button type='submit' class='buttons_large buttons_profile' name='id_seguir' value='<?php echo($id); ?>'>Seguir</button>
+      </form>
     </div>
     <div class="seguidores">
-      <a href="nav.php?page=new_follow" class="buttons_large buttons_profile">Ver Seguidores</a>
+      <!--<a href="nav.php?page=new_follow" class="button">Ver Usuários</a>-->
     </div>
   </div>
   <div class="suas_fotos">
     <?php
-      $sql = "SELECT img_path, img_desc, img_local FROM imagens WHERE id_user = ".$user['id']." ORDER BY dt_post DESC";
+      $sql = "SELECT img_path, img_desc, img_local FROM imagens WHERE id_user = ".$id." ORDER BY dt_post DESC";
       $column_count = 0;
       $html_string = "<table class=''>";
       $html_string .="<tr>";

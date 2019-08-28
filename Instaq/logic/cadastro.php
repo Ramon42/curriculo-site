@@ -10,16 +10,42 @@ $nome = fromPost("nome");
 $usuario = fromPost("usuario");
 $senha = fromPost("senha");
 $concordo = fromPost("concordo");
+
+$default_bio = "Conte mais sobre você aqui!";
+$default_profile_img = "../images/profile_icon.png";
 //verificação
 $messages = "";
 if (empty($email)) {
   $messages .= ("<li>E-mail obrigatório</li>");
+}
+if(isset($email)){
+  if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    $messages .=("<li>E-mail inválido</li>");
+  }
+}
+if(!empty($email)){
+  $sqlValidarUser = "SELECT COUNT(*) FROM usuarios WHERE email = '".$email."'";
+  $stmt = getConnection()->prepare($sqlValidarUser);
+  $stmt->execute();
+  $count = $stmt->fetchColumn();
+  if($count != 0){
+    $messages .= ("<li>E-Mail já cadastrado</li>");
+  }
 }
 if (empty($nome)) {
   $messages .= ("<li>Nome obrigatório</li>");
 }
 if (empty($usuario)) {
   $messages .= ("<li>Usuário obrigatório</li>");
+}
+if(!empty($usuario)){
+  $sqlValidarUser = "SELECT COUNT(*) FROM usuarios WHERE usuario = '".$usuario."'";
+  $stmt = getConnection()->prepare($sqlValidarUser);
+  $stmt->execute();
+  $count = $stmt->fetchColumn();
+  if($count != 0){
+    $messages .= ("<li>Usuário já existe</li>");
+  }
 }
 if (empty($senha)) {
   $messages .= ("<li>Senha obrigatória</li>");
@@ -45,10 +71,35 @@ try{
   $stmt->execute();
   mkdir("../users/".$usuario);
   mkdir("../users/".$usuario."/uploads");
+  mkdir("../users/".$usuario."/img_perfil");
 }catch(PDOException $e){
   echo "Erro: ". $e->getMessage();
   die;
 }
+try {
+  $sql = "SELECT id FROM usuarios WHERE usuario = :usuario";
+  $stmt = getConnection()->prepare($sql);
+  $stmt->bindParam(':usuario', $usuario);
+  $stmt->execute();
+  $id_temp = $stmt->fetch();
+  try {
+    $sql = "INSERT INTO perfil(id, bio, img_perfil) VALUES (:id, :bio, :img_perfil)";
+    $stmt = getConnection()->prepare($sql);
+    $stmt->bindParam(':id', $id_temp[0]);
+    $stmt->bindParam(':bio', $default_bio);
+    $stmt->bindParam(':img_perfil', $default_profile_img);
+    $stmt->execute();
+  } catch (PDOException $e) {
+    echo "Erro: ". $e->getMessage();
+    die;
+  }
+
+} catch (PDOException $e) {
+  echo "Erro: ". $e->getMessage();
+  die;
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt" dir="ltr">

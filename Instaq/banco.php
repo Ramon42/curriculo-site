@@ -1,7 +1,7 @@
 <?php
 function getConnection(){
-  $username = 'ramon';
-  $password = '9179';
+  $username = 'root';
+  $password = '';
   $conn = new PDO('mysql:host=localhost;dbname=instamatch', $username, $password);
   return $conn;
 }

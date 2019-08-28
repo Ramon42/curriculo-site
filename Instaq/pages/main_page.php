@@ -1,13 +1,19 @@
+<?php
+  if (!isset($user)){
+      header("Location: login.php");
+      exit();
+  }
+?>
 <header class="top_user_bar">
   <div id="search_area">
-      <form action="logic/buscar_usuario.php" method="post">
+      <form action="nav.php?page=buscar_usuario" method="post">
         <input type="text" name="buscar" class="top_bar_search_bar" required="false" placeholder="Buscar"/>
         <button type='submit' class="top_bar_search_button" name="search_button"><i class="fas fa-search"></i></button>
       </form>
     <a href="nav.php?page=perfil" id="link_profile"><?php echo ("Usuário:" .$user['usuario']); ?></a>
     <a href="login.php" class = "buttons_large" id="link_profile">Logout</a>
   </div>
-  <a href="enviarFoto.php" class="buttons_large buttons_large-2">Enviar uma Foto</a>
+  <a href="nav.php?page=enviarFoto" class="buttons_large buttons_large-2">Enviar uma Foto</a>
 
 </header>
 <main class="mainSession">
