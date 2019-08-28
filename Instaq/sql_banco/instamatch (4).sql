@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Ago-2019 às 09:22
+-- Generation Time: 28-Ago-2019 às 23:03
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.3
 
@@ -41,7 +41,13 @@ CREATE TABLE `comentarios_imgs` (
 
 INSERT INTO `comentarios_imgs` (`id_img`, `id_user_comentario`, `comentario`, `dt_comentario`) VALUES
 (2, 3, 'opa bacana', '2019-08-26 03:40:09'),
-(4, 1, 'legal', '2019-08-27 05:43:34');
+(4, 1, 'legal', '2019-08-27 05:43:34'),
+(8, 1, 'bacanÃ£o bro', '2019-08-28 04:56:40'),
+(3, 1, 'nÃ£o pode entrar em panico nÃ£o poxa', '2019-08-28 04:57:35'),
+(5, 1, 'vo quebra o sistema xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', '2019-08-28 04:59:27'),
+(6, 1, '<?php die;?>', '2019-08-28 05:00:03'),
+(6, 1, '<?', '2019-08-28 05:02:17'),
+(10, 1, '<?php die;?>', '2019-08-28 05:03:23');
 
 -- --------------------------------------------------------
 
@@ -71,6 +77,7 @@ INSERT INTO `imagens` (`id_user`, `id_img`, `img_path`, `img_desc`, `img_local`,
 (1, 7, '../users/ramon42/uploads/15668955335d64edadf25c5.jpg', ' ', 'nÃ£o identificado', '2019-08-27 05:46:15'),
 (1, 8, '../users/ramon42/uploads/15668955865d64ede2002a3.png', ' ', 'nÃ£o identificado', '2019-08-27 05:46:26'),
 (1, 9, '../users/ramon42/uploads/15668966975d64f239b929c.png', ' ', 'nÃ£o identificado', '2019-08-27 06:05:07'),
+(1, 10, '../users/ramon42/uploads/15669782245d6630b089d20.jpg', ' ', 'nÃ£o identificado', '2019-08-28 04:43:50'),
 (3, 3, '../users/keth123/uploads/15668010645d637ca867e01.png', 'fsdf', 'fsdf', '2019-08-26 03:31:05');
 
 -- --------------------------------------------------------
@@ -91,8 +98,11 @@ CREATE TABLE `perfil` (
 --
 
 INSERT INTO `perfil` (`id`, `bio`, `img_perfil`, `dt_att`) VALUES
-(1, 'Este Ã© um perfil teste criado obviamente para testar as coisas (ora ora)', '../users/ramon42/img_perfil/15669679135d66086990c97.jpg', '2019-08-28 01:11:44'),
+(1, 'Este Ã© um perfil teste criado obviamente para testar as coisas (ora ora) mais um teste ai, agora foi eu acho', '../users/ramon42/img_perfil/15670259865d66eb4260fd7.jpg', '2019-08-28 01:11:44'),
+(2, 'Conte mais sobre você!', '../images/profile_icon.png', '2019-08-28 17:34:51'),
 (3, 'Teste de Bio Keth', '../images/profile_icon.png', '2019-08-28 03:24:02'),
+(4, 'Conte mais sobre você!', '../images/profile_icon.png', '2019-08-28 17:34:51'),
+(6, 'Conte mais sobre você!', '../images/profile_icon.png', '2019-08-28 17:34:51'),
 (7, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', '../users/aaa1234/img_perfil/15669654265d65feb289f20.jpg', '2019-08-28 01:11:44');
 
 -- --------------------------------------------------------
@@ -111,9 +121,16 @@ CREATE TABLE `seguidores` (
 --
 
 INSERT INTO `seguidores` (`id_user`, `id_user_segue`) VALUES
+(1, 1),
 (1, 2),
 (1, 3),
-(3, 1);
+(2, 2),
+(3, 1),
+(3, 3),
+(4, 4),
+(6, 1),
+(6, 6),
+(7, 7);
 
 -- --------------------------------------------------------
 
@@ -231,13 +248,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `imagens`
 --
 ALTER TABLE `imagens`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

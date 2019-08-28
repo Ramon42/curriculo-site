@@ -1,15 +1,17 @@
 <?php
 
   $id = fromGet("id_busca");
-  $sql = "SELECT bio, img_perfil FROM perfil WHERE id = ".$id."";
+  $sql = "SELECT p.bio, p.img_perfil, u.usuario FROM perfil p, usuarios u WHERE p.id = ".$id." AND u.id = ".$id."";
   foreach(getConnection()->query($sql) as $row){
     $bio = $row['bio'];
     $img_perfil = $row['img_perfil'];
+    $usuario = $row['usuario'];
   }
 ?>
 <section>
   <div class="main_perfil">
-    <a href="../nav.php?page=main_page" class="top_bar_back_button" name="back_button"><i class="fas fa-arrow-left"></i></a>
+    <a href="../nav.php?page=new_follow" class="top_bar_back_button" name="back_button"><i class="fas fa-arrow-left"></i></a>
+    <h4><?php echo($usuario); ?></h4>
     <div class="foto_perfil">
       <img src="<?php echo($img_perfil); ?>" alt="img_perfil">
     </div>
@@ -17,9 +19,21 @@
       <p><?php echo($bio); ?></p>
     </div>
     <div class="">
-      <form method='POST' action='../logic/seguir_user.php'>
-        <button type='submit' class='buttons_large buttons_profile' name='id_seguir' value='<?php echo($id); ?>'>Seguir</button>
-      </form>
+      <?php
+      $sql = "SELECT * FROM seguidores WHERE id_user = '".$user['id']."' AND id_user_segue = '".$id."'";
+      $stmt = getConnection()->query($sql);
+      $aux = $stmt->fetchColumn();
+      if($aux != 0){
+        echo ("<form method='POST' action='../logic/unfollow.php'>");
+          echo ("<button type='submit' class='buttons_large buttons_profile' name='id_unf' value='".$id."'>Deixar de Seguir</button>");
+        echo ("</form>");
+      }
+      else if($aux == 0){
+        echo ("<form method='POST' action='../logic/seguir_user.php'>");
+          echo ("<button type='submit' class='buttons_large buttons_profile' name='id_seguir' value='".$id."'>Seguir</button>");
+        echo ("</form>");
+      }
+      ?>
     </div>
     <div class="seguidores">
       <!--<a href="nav.php?page=new_follow" class="button">Ver Usuários</a>-->

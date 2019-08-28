@@ -21,7 +21,10 @@
       <a href="nav.php?page=editar_perfil" class="buttons_large buttons_profile">Editar Perfil</a>
     </div>
     <div class="seguidores">
-      <a href="nav.php?page=new_follow" class="buttons_large buttons_profile">Ver Seguidores</a>
+      <a href="nav.php?page=new_follow" class="buttons_large buttons_profile">Seguidores</a>
+    </div>
+    <div class="seguidores">
+      <a href="nav.php?page=seguindo" class="buttons_large buttons_profile">Seguindo</a>
     </div>
   </div>
   <div class="suas_fotos">
