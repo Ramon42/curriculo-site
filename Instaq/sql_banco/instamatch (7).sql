@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 30-Ago-2019 às 12:05
+-- Generation Time: 30-Ago-2019 às 19:44
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.3
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `comentarios_imgs` (
   `id_img` int(11) NOT NULL,
   `id_user_comentario` int(11) NOT NULL,
-  `comentario` varchar(200) DEFAULT NULL,
+  `comentario` varchar(200) NOT NULL,
   `dt_comentario` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -41,15 +41,11 @@ CREATE TABLE `comentarios_imgs` (
 
 INSERT INTO `comentarios_imgs` (`id_img`, `id_user_comentario`, `comentario`, `dt_comentario`) VALUES
 (2, 3, 'opa bacana', '2019-08-26 03:40:09'),
-(4, 1, 'legal', '2019-08-27 05:43:34'),
-(8, 1, 'bacanÃ£o bro', '2019-08-28 04:56:40'),
-(3, 1, 'nÃ£o pode entrar em panico nÃ£o poxa', '2019-08-28 04:57:35'),
+(5, 1, 'teste2', '2019-08-30 03:29:59'),
 (5, 1, 'vo quebra o sistema xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', '2019-08-28 04:59:27'),
-(6, 1, '<?php die;?>', '2019-08-28 05:00:03'),
-(6, 1, '<?', '2019-08-28 05:02:17'),
+(8, 1, 'bacanÃ£o bro', '2019-08-28 04:56:40'),
 (10, 1, '<?php die;?>', '2019-08-28 05:03:23'),
-(10, 1, 'teste', '2019-08-30 03:27:32'),
-(5, 1, 'teste2', '2019-08-30 03:29:59');
+(10, 1, 'teste', '2019-08-30 03:27:32');
 
 -- --------------------------------------------------------
 
@@ -67,11 +63,14 @@ CREATE TABLE `curtidas` (
 --
 
 INSERT INTO `curtidas` (`id_user`, `id_img`) VALUES
-(1, 3),
-(1, 4),
 (1, 5),
-(1, 7),
-(1, 11);
+(1, 11),
+(3, 5),
+(3, 8),
+(3, 9),
+(3, 10),
+(3, 11),
+(3, 12);
 
 -- --------------------------------------------------------
 
@@ -95,15 +94,12 @@ CREATE TABLE `imagens` (
 INSERT INTO `imagens` (`id_user`, `id_img`, `img_path`, `img_desc`, `img_local`, `dt_post`) VALUES
 (1, 1, '../users/ramon42/uploads/15662914375d5bb5ed48838.png', 'Foto teste', 'Algum lugar', '2019-08-20 05:57:18'),
 (1, 2, '../users/ramon42/uploads/15668004645d637a50553d3.png', ' ', 'nÃ£o identificado', '2019-08-26 03:21:05'),
-(1, 4, '../users/ramon42/uploads/15668020635d63808f3d88f.png', ' ', 'nÃ£o identificado', '2019-08-26 03:47:44'),
 (1, 5, '../users/ramon42/uploads/15668954285d64ed441629c.png', ' ', 'nÃ£o identificado', '2019-08-27 05:43:48'),
-(1, 6, '../users/ramon42/uploads/15668955335d64edadf25c5.jpg', ' ', 'nÃ£o identificado', '2019-08-27 05:45:37'),
-(1, 7, '../users/ramon42/uploads/15668955335d64edadf25c5.jpg', ' ', 'nÃ£o identificado', '2019-08-27 05:46:15'),
 (1, 8, '../users/ramon42/uploads/15668955865d64ede2002a3.png', ' ', 'nÃ£o identificado', '2019-08-27 05:46:26'),
 (1, 9, '../users/ramon42/uploads/15668966975d64f239b929c.png', ' ', 'nÃ£o identificado', '2019-08-27 06:05:07'),
 (1, 10, '../users/ramon42/uploads/15669782245d6630b089d20.jpg', ' ', 'nÃ£o identificado', '2019-08-28 04:43:50'),
 (1, 11, '../users/ramon42/uploads/15671505615d68d1e1c5e23.jpg', ' ', 'nÃ£o identificado', '2019-08-30 04:36:39'),
-(3, 3, '../users/keth123/uploads/15668010645d637ca867e01.png', 'fsdf', 'fsdf', '2019-08-26 03:31:05');
+(3, 12, '../users/keth123/uploads/15671841735d69552d669d4.gif', ' ', 'nÃ£o identificado', '2019-08-30 13:56:55');
 
 -- --------------------------------------------------------
 
@@ -239,11 +235,18 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 
 --
+-- Indexes for table `comentarios_imgs`
+--
+ALTER TABLE `comentarios_imgs`
+  ADD PRIMARY KEY (`id_img`,`id_user_comentario`,`comentario`),
+  ADD KEY `fk_id_comment` (`id_img`) USING BTREE;
+
+--
 -- Indexes for table `curtidas`
 --
 ALTER TABLE `curtidas`
   ADD PRIMARY KEY (`id_user`,`id_img`),
-  ADD KEY `fk_foreign_key_id_curtida` (`id_img`,`id_user`) USING BTREE;
+  ADD KEY `fk_foreign_key_id_curtida` (`id_img`);
 
 --
 -- Indexes for table `imagens`
@@ -280,7 +283,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `imagens`
 --
 ALTER TABLE `imagens`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
@@ -293,10 +296,16 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- Limitadores para a tabela `comentarios_imgs`
+--
+ALTER TABLE `comentarios_imgs`
+  ADD CONSTRAINT `fk_foreign_key_id_img` FOREIGN KEY (`id_img`) REFERENCES `imagens` (`id_img`) ON DELETE CASCADE;
+
+--
 -- Limitadores para a tabela `curtidas`
 --
 ALTER TABLE `curtidas`
-  ADD CONSTRAINT `fk_foreign_key_id_img_curtida` FOREIGN KEY (`id_img`) REFERENCES `imagens` (`id_img`);
+  ADD CONSTRAINT `fk_foreign_key_id_img_curtida` FOREIGN KEY (`id_img`) REFERENCES `imagens` (`id_img`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `seguidores`

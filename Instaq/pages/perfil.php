@@ -37,10 +37,12 @@
         try {
           $sql = "SELECT * FROM curtidas WHERE id_img = '".$row['id_img']."'";
           $stmt = getConnection()->query($sql);
-          $num_curtidas = $stmt->fetchColumn();
+          $stmt->execute();
+          $num_curtidas = $stmt->rowCount();
           $html_string .= "<td align='center'>";
           $html_string .= "<div class=''>";
           $html_string .=   "<div class='col-5'>";
+          $html_string .=     "<a href='../logic/del_img.php?id=".$row['id_img']."&pg=perfil' class='del_button' name='del_button'><i class='fas fa-times'></i></a>";
           $html_string .=     "<img src= '".$row['img_path']."' atl='".$row['img_desc']."'>";
           $html_string .=     $num_curtidas." curtidas.<br>";
           $html_string .=     "Postado em: ".$row['img_local']."<br>";

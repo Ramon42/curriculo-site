@@ -41,7 +41,8 @@
     $aux = $stmt->fetchColumn();
     $sql = "SELECT * FROM curtidas WHERE id_img = '".$row['id_img']."'";
     $stmt = getConnection()->query($sql);
-    $num_curtidas = $stmt->fetchColumn();
+    $stmt->execute();
+    $num_curtidas = $stmt->rowCount();
     if($aux != 0){
       $html_string .=   "<form method= 'post' class='' enctype='multipart/form-data' action='../logic/descurtir.php?pg=main_page'>";
       $html_string .=     "<input type='hidden' name='id_img' value='".$row['id_img']."'>";

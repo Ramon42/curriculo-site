@@ -43,6 +43,7 @@
     <?php
       $sql = "SELECT img_path, img_desc, img_local, id_img FROM imagens WHERE id_user = ".$id." ORDER BY dt_post DESC";
       $column_count = 0;
+      $num_curtidas = 0;
       $html_string = "<table class=''>";
       $html_string .="<tr>";
       foreach(getConnection()->query($sql) as $row){
@@ -54,9 +55,10 @@
           $sql = "SELECT * FROM curtidas WHERE id_user = '".$user['id']."' AND id_img = '".$row['id_img']."'";
           $stmt = getConnection()->query($sql);
           $aux = $stmt->fetchColumn();
-          $sql = "SELECT * FROM curtidas WHERE id_img = '".$row['id_img']."'";
-          $stmt = getConnection()->query($sql);
-          $num_curtidas = $stmt->fetchColumn();
+          $sqlC = "SELECT * FROM curtidas WHERE id_img = '".$row['id_img']."'";
+          $curtidas = getConnection()->query($sqlC);
+          $curtidas->execute();
+          $num_curtidas = $curtidas->rowCount();
           if($aux != 0){
             $html_string .=   "<form method= 'post' class='' enctype='multipart/form-data' action='../logic/descurtir.php?pg=perfil_busca&id_busca=".$id."'>";
             $html_string .=     "<input type='hidden' name='id_img' value='".$row['id_img']."'>";
@@ -69,6 +71,7 @@
             $html_string .=     $num_curtidas."<button type='submit' class='like_button' name='curtir'><i class='far fa-heart'></i></button>";
             $html_string .=   "</form>";
           }
+          $num_curtidas = 0;
           $html_string .=     "Postado em: ".$row['img_local']."<br>";
           $html_string .=     $row['img_desc'];
           $html_string .=   "</div>";

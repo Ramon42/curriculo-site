@@ -42,7 +42,6 @@
             $path = "../users/".$user[2]."/uploads/";
             $destino = "../users/".$user[2]."/uploads/".$novoNome;
             if ( @move_uploaded_file ( $arquivo_tmp, $destino ) ) {
-              copy($path.''.$novoNome, $path.'/copy_'.$novoNome);
               setcookie('descricao_temp', $descricao, time()+60*60*7, "/");
               setcookie('local_temp', $local, time()+60*60*7, "/");
               setcookie('path_temp', $destino, time()+60*60*7, "/");

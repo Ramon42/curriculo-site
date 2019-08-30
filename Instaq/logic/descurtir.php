@@ -5,6 +5,7 @@ session_start();
 $user = $_SESSION["autenticado"];
 $id_img = fromPost('id_img');
 $pg_atual = fromGet('pg');
+$id = fromGet('id_busca');
 
 if (!isset($user)){
     header("Location: ../login.php");
@@ -21,7 +22,7 @@ try {
   $stmt->bindParam(':id_user', $user['id']);
   $stmt->bindParam(':id_img', $id_img);
   $stmt->execute();
-  header("location: ../nav.php?page=".$pg_atual."");
+  header("location: ../nav.php?page=".$pg_atual."&id_busca=".$id."");
 } catch (PDOException $e) {
   echo "Erro: ". $e->getMessage();
   die;
