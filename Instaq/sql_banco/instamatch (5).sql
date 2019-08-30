@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Ago-2019 às 23:03
+-- Generation Time: 30-Ago-2019 às 12:05
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.3
 
@@ -47,7 +47,31 @@ INSERT INTO `comentarios_imgs` (`id_img`, `id_user_comentario`, `comentario`, `d
 (5, 1, 'vo quebra o sistema xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', '2019-08-28 04:59:27'),
 (6, 1, '<?php die;?>', '2019-08-28 05:00:03'),
 (6, 1, '<?', '2019-08-28 05:02:17'),
-(10, 1, '<?php die;?>', '2019-08-28 05:03:23');
+(10, 1, '<?php die;?>', '2019-08-28 05:03:23'),
+(10, 1, 'teste', '2019-08-30 03:27:32'),
+(5, 1, 'teste2', '2019-08-30 03:29:59');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `curtidas`
+--
+
+CREATE TABLE `curtidas` (
+  `id_user` int(11) NOT NULL,
+  `id_img` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `curtidas`
+--
+
+INSERT INTO `curtidas` (`id_user`, `id_img`) VALUES
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 7),
+(1, 11);
 
 -- --------------------------------------------------------
 
@@ -78,6 +102,7 @@ INSERT INTO `imagens` (`id_user`, `id_img`, `img_path`, `img_desc`, `img_local`,
 (1, 8, '../users/ramon42/uploads/15668955865d64ede2002a3.png', ' ', 'nÃ£o identificado', '2019-08-27 05:46:26'),
 (1, 9, '../users/ramon42/uploads/15668966975d64f239b929c.png', ' ', 'nÃ£o identificado', '2019-08-27 06:05:07'),
 (1, 10, '../users/ramon42/uploads/15669782245d6630b089d20.jpg', ' ', 'nÃ£o identificado', '2019-08-28 04:43:50'),
+(1, 11, '../users/ramon42/uploads/15671505615d68d1e1c5e23.jpg', ' ', 'nÃ£o identificado', '2019-08-30 04:36:39'),
 (3, 3, '../users/keth123/uploads/15668010645d637ca867e01.png', 'fsdf', 'fsdf', '2019-08-26 03:31:05');
 
 -- --------------------------------------------------------
@@ -98,7 +123,7 @@ CREATE TABLE `perfil` (
 --
 
 INSERT INTO `perfil` (`id`, `bio`, `img_perfil`, `dt_att`) VALUES
-(1, 'Este Ã© um perfil teste criado obviamente para testar as coisas (ora ora) mais um teste ai, agora foi eu acho', '../users/ramon42/img_perfil/15670259865d66eb4260fd7.jpg', '2019-08-28 01:11:44'),
+(1, 'Este Ã© um perfil teste criado obviamente para testar as coisas (ora ora) mais um teste ai, agora foi eu acho. OI DELLA', '../users/ramon42/img_perfil/15670259865d66eb4260fd7.jpg', '2019-08-28 01:11:44'),
 (2, 'Conte mais sobre você!', '../images/profile_icon.png', '2019-08-28 17:34:51'),
 (3, 'Teste de Bio Keth', '../images/profile_icon.png', '2019-08-28 03:24:02'),
 (4, 'Conte mais sobre você!', '../images/profile_icon.png', '2019-08-28 17:34:51'),
@@ -214,6 +239,13 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 
 --
+-- Indexes for table `curtidas`
+--
+ALTER TABLE `curtidas`
+  ADD PRIMARY KEY (`id_user`,`id_img`),
+  ADD KEY `fk_foreign_key_id_curtida` (`id_img`,`id_user`) USING BTREE;
+
+--
 -- Indexes for table `imagens`
 --
 ALTER TABLE `imagens`
@@ -248,7 +280,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `imagens`
 --
 ALTER TABLE `imagens`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
@@ -261,10 +293,17 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- Limitadores para a tabela `curtidas`
+--
+ALTER TABLE `curtidas`
+  ADD CONSTRAINT `fk_foreign_key_id_img_curtida` FOREIGN KEY (`id_img`) REFERENCES `imagens` (`id_img`);
+
+--
 -- Limitadores para a tabela `seguidores`
 --
 ALTER TABLE `seguidores`
-  ADD CONSTRAINT `fk_foreign_key_id_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`);
+  ADD CONSTRAINT `fk_foreign_key_id_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`),
+  ADD CONSTRAINT `fk_foreign_key_id_user_curtida` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
