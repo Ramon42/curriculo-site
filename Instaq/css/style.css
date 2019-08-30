@@ -88,12 +88,17 @@
 
 /*teste tabela colunas de fotos */
 table, th, td {
-  border: 1px solid black;
+  border: 0px;
+  background-color: RGBa(255, 255, 255, 45%);
 }
 th, td{
   width: 33.33%;
 }
 /**/
+
+.div_float{
+  display: inline-block;
+}
 
 #txt_bio{
   width: 80%;
@@ -235,4 +240,18 @@ img {
   background-color: #2A4B7C;
   border: 1px outset #2A4B7C;
   cursor: pointer;
+}
+.like_button{
+  border-radius: 3px;
+  border: 0px;
+  width: 25px;
+  height:25px;
+  background-color: #2A4B7C;
+  border: 1px outset #2A4B7C;
+  cursor: pointer;
+}
+
+/*TRATAMENTO DE IMAGENS TESTE*/
+.sent_img{
+  filter: blur() brightness() contrast() grayscale();
 }

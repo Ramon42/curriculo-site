@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
     <title></title>
   </head>
@@ -38,20 +39,14 @@
             $novoNome = uniqid ( time () ) . '.' . $extensao;
 
             // Concatena a pasta com o nome
+            $path = "../users/".$user[2]."/uploads/";
             $destino = "../users/".$user[2]."/uploads/".$novoNome;
             if ( @move_uploaded_file ( $arquivo_tmp, $destino ) ) {
-              setcookie('descricao_temp', $descricao, time()+60*60*7);
-              setcookie('local_temp', $local, time()+60*60*7);
-              setcookie('path_temp', $destino, time()+60*60*7);
-              echo ("<form method='post' enctype='multipart/form-data' action='uploadImg.php'>");
-              echo ("<div class='main_pub'>");
-              echo ($user[0]);
-              echo ("<img src= '".$destino."' atl='preview'>");
-              echo ("Postado em: ".$local."<br>");
-              echo ($descricao);
-              echo ("</div>");
-              echo ("<input type='submit' class='buttons_large buttons_large-2' value='Enviar'>");
-              echo ("</form");
+              copy($path.''.$novoNome, $path.'/copy_'.$novoNome);
+              setcookie('descricao_temp', $descricao, time()+60*60*7, "/");
+              setcookie('local_temp', $local, time()+60*60*7, "/");
+              setcookie('path_temp', $destino, time()+60*60*7, "/");
+              header("location: ../nav.php?page=img_preview");
             }
         }
       }

@@ -41,7 +41,7 @@
   </div>
   <div class="suas_fotos">
     <?php
-      $sql = "SELECT img_path, img_desc, img_local FROM imagens WHERE id_user = ".$id." ORDER BY dt_post DESC";
+      $sql = "SELECT img_path, img_desc, img_local, id_img FROM imagens WHERE id_user = ".$id." ORDER BY dt_post DESC";
       $column_count = 0;
       $html_string = "<table class=''>";
       $html_string .="<tr>";
@@ -51,6 +51,24 @@
           $html_string .= "<div class=''>";
           $html_string .=   "<div class='col-5'>";
           $html_string .=     "<img src= '".$row['img_path']."' atl='".$row['img_desc']."'>";
+          $sql = "SELECT * FROM curtidas WHERE id_user = '".$user['id']."' AND id_img = '".$row['id_img']."'";
+          $stmt = getConnection()->query($sql);
+          $aux = $stmt->fetchColumn();
+          $sql = "SELECT * FROM curtidas WHERE id_img = '".$row['id_img']."'";
+          $stmt = getConnection()->query($sql);
+          $num_curtidas = $stmt->fetchColumn();
+          if($aux != 0){
+            $html_string .=   "<form method= 'post' class='' enctype='multipart/form-data' action='../logic/descurtir.php?pg=perfil_busca&id_busca=".$id."'>";
+            $html_string .=     "<input type='hidden' name='id_img' value='".$row['id_img']."'>";
+            $html_string .=     $num_curtidas."<button type='submit' class='like_button' name='descurtir'><i class='fas fa-heart'></i></button>";
+            $html_string .=   "</form>";
+          }
+          else if($aux == 0){
+            $html_string .=   "<form method= 'post' class='' enctype='multipart/form-data' action='../logic/curtir.php?pg=perfil_busca&id_busca=".$id."'>";
+            $html_string .=     "<input type='hidden' name='id_img' value='".$row['id_img']."'>";
+            $html_string .=     $num_curtidas."<button type='submit' class='like_button' name='curtir'><i class='far fa-heart'></i></button>";
+            $html_string .=   "</form>";
+          }
           $html_string .=     "Postado em: ".$row['img_local']."<br>";
           $html_string .=     $row['img_desc'];
           $html_string .=   "</div>";
